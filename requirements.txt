@@ -1,0 +1,4 @@
+pydub
+python-dotenv
+tts
+yt-dlp
