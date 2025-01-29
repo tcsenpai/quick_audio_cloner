@@ -3,6 +3,7 @@ import torch
 from TTS.api import TTS
 import os
 import dotenv
+from libs.to_mp3 import convert_to_mp3
 from libs.youtube_wav import download_from_cli
 import os
 
@@ -133,7 +134,12 @@ def start_job():
 
         except Exception as e:
             print(f"Error playing audio: {str(e)}")
-
+    # Ask to convert to mp3
+    convert_response = (
+        input("\nWould you like to convert the output file to mp3? [y/N] ").strip().lower()
+    )
+    if convert_response in ["y", "yes"]:
+        convert_to_mp3(outfile)
 
 def set_target_voice():
     """Set the target voice for TTS."""
